@@ -58,7 +58,8 @@ if (req.query.code) {
         res.cookie('access_token', access_token, {
             maxAge: expires_in * 1000,
             httpOnly: true,
-            secure: true
+            secure: false,
+            sameSite: 'None'
         });
 
         res.redirect('https://beatloop-project.onrender.com/playlists');
