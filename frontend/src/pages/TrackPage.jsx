@@ -12,7 +12,7 @@ const TrackPage = ({ playlistId }) => {
     setAuthenticated(true);
     const fetchTracks = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/playlist/${playlistId}/tracks`); // Replace with your backend URL
+        const response = await axios.get(`https://beatloop-backend.onrender.com/playlist/${playlistId}/tracks`); // Replace with your backend URL
         setTracks(response.data);
       } catch (error) {
         console.error(`Error fetching tracks for playlist ${playlistId}:`, error);
