@@ -11,7 +11,7 @@ import { connectDB } from "../config/dbConnection.js";
 
 const SPOTIFY_CLIENT_ID = '42227dfaa2ae4abd836d04442c718c9d';
 const SPOTIFY_CLIENT_SECRET = '767f523ab80f4b1788c56c9b0226cc06';
-const SPOTIFY_REDIRECT_URI = 'http://localhost:5000/api/callback';
+const SPOTIFY_REDIRECT_URI = 'https://beatloop-project.onrender.com/api/callback';
 const AUTH_URL = 'https://accounts.spotify.com/authorize';
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const API_BASE_URL = 'https://api.spotify.com/v1/';
