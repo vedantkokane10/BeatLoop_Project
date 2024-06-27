@@ -10,7 +10,7 @@ const LoginPage = () => {
   
   const handleLogin = async () => {
     setAuthenticated(true);
-    const spotifyLoginEndpoint = 'http://localhost:5000/api/login';
+    const spotifyLoginEndpoint = 'https://beatloop-backend.onrender.com/api/login';
     window.location.href = spotifyLoginEndpoint;
   };
   
