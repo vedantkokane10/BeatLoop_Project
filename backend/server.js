@@ -16,7 +16,15 @@ connectDB();
 const app = express();
 const port = 5000;
 
-app.use(cors({ origin: 'https://beatloop-project.onrender.com', credentials: true }));
+// app.use(cors({ origin: 'https://beatloop-project.onrender.com', credentials: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(cookieParser());
+
+app.use(cors({ 
+    origin: 'https://beatloop-project.onrender.com', 
+    credentials: true 
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
