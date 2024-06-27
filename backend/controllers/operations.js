@@ -58,7 +58,7 @@ const callbackAfterLogin = async (req, res) => {
                 httpOnly: true,
                 secure: false
             });
-            res.redirect('http://localhost:3000/playlists');
+            res.redirect('https://beatloop-project.onrender.com/playlists');
         } 
         catch (error) {
             console.error('Error fetching token:', error.message);
