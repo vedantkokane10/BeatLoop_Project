@@ -62,7 +62,7 @@ if (req.query.code) {
             sameSite: 'None'
         });
 
-        res.redirect('https://beatloop-project.onrender.com/playlists');
+        res.redirect('https://beat-loop-project-frontend.vercel.app/playlists');
     } catch (error) {
         console.error('Error fetching token:', error.message);
         res.status(500).json({
