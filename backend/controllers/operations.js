@@ -36,42 +36,42 @@ const loginToSpotifyAccount = async (req, res) => {
 
 // Callback after Spotify login
 const callbackAfterLogin = async (req, res) => {
-    if (req.query.error) {
-        return res.json({ message: req.query.error });
-    }
+if (req.query.error) {
+    return res.json({ message: req.query.error });
+}
 
-    if (req.query.code) {
-        try {
-            const response = await axios.post(TOKEN_URL, querystring.stringify({
-                code: req.query.code,
-                grant_type: 'authorization_code',
-                redirect_uri: SPOTIFY_REDIRECT_URI,
-                client_id: SPOTIFY_CLIENT_ID,
-                client_secret: SPOTIFY_CLIENT_SECRET
-            }), {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            });
-            const { access_token, refresh_token, expires_in } = response.data;
-            res.cookie('access_token', access_token, {
-                maxAge: expires_in * 1000,
-                httpOnly: true,
-                secure: false
-            });
-            //res.redirect('http://localhost:3000/playlists');
-            res.redirect('https://beatloop-project.onrender.com/playlists');
-            //https://beatloop-project.onrender.com/api/callback
-        } 
-        catch (error) {
-            console.error('Error fetching token:', error.message);
-            res.status(500).json({
-                error: 'Failed to get token',
-                details: error.response ? error.response.data : error.message
-            });
-        }
+if (req.query.code) {
+    try {
+        const response = await axios.post(TOKEN_URL, querystring.stringify({
+            code: req.query.code,
+            grant_type: 'authorization_code',
+            redirect_uri: SPOTIFY_REDIRECT_URI,
+            client_id: SPOTIFY_CLIENT_ID,
+            client_secret: SPOTIFY_CLIENT_SECRET
+        }), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+
+        const { access_token, refresh_token, expires_in } = response.data;
+        res.cookie('access_token', access_token, {
+            maxAge: expires_in * 1000,
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None'
+        });
+        res.redirect('https://beatloop-project.onrender.com/playlists');
+    } catch (error) {
+        console.error('Error fetching token:', error.message);
+        res.status(500).json({
+            error: 'Failed to get token',
+            details: error.response ? error.response.data : error.message
+        });
     }
+}
 };
+
 
 // Fetch user's playlists
 const fetchPlaylist = async (req, res) => {
