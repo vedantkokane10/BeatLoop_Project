@@ -11,6 +11,7 @@ import { connectDB } from "../config/dbConnection.js";
 
 const SPOTIFY_CLIENT_ID = '42227dfaa2ae4abd836d04442c718c9d';
 const SPOTIFY_CLIENT_SECRET = '767f523ab80f4b1788c56c9b0226cc06';
+//const SPOTIFY_REDIRECT_URI = 'http://localhost:5000/api/callback';
 const SPOTIFY_REDIRECT_URI = 'https://beatloop-project.onrender.com/api/callback';
 const AUTH_URL = 'https://accounts.spotify.com/authorize';
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
@@ -58,7 +59,9 @@ const callbackAfterLogin = async (req, res) => {
                 httpOnly: true,
                 secure: false
             });
+            //res.redirect('http://localhost:3000/playlists');
             res.redirect('https://beatloop-project.onrender.com/playlists');
+            //https://beatloop-project.onrender.com/api/callback
         } 
         catch (error) {
             console.error('Error fetching token:', error.message);
