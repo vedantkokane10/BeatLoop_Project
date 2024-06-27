@@ -22,7 +22,7 @@ const port = 5000;
 // app.use(cookieParser());
 
 app.use(cors({ 
-    origin: 'https://beatloop-project.onrender.com', 
+    origin: 'https://beat-loop-project-frontend.vercel.app/', 
     credentials: true 
 }));
 app.use(express.json());
