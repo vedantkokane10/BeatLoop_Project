@@ -19,7 +19,7 @@ const PlaylistInfoPage = () => {
         const config = {
           withCredentials : true
         }
-        const response = await axios.get(`http://localhost:5000/api/playlists/${playlistId}`, config);
+        const response = await axios.get(`https://beatloop-backend.onrender.com/api/playlists/${playlistId}`, config);
         setTracks(response.data);
         setLoading(false);
       } catch (err) {
