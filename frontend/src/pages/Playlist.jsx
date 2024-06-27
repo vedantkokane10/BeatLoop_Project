@@ -18,7 +18,8 @@ const Playlist = () => {
                     headers: {'Content-Type' : 'application/json'},
                     withCredentials : true
                 }
-                const response = await axios.get('https://beatloop-backend.onrender.com/api/playlists',config);
+                const response = await axios.get('https://beatloop-backend.onrender.com/api/playlists', config);
+
                 setPlaylistsDetails(response.data);
                 if(playlistsDetails.length === 0){
                     return (
